@@ -1,0 +1,19 @@
+name: SP011 global renderer probe
+on:
+  workflow_dispatch:
+permissions: {}
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Emit benign renderer canary
+        shell: bash
+        run: |
+          {
+            echo '<pre lang="mermaid"><code><b>FLOW_CANARY</b></code></pre>'
+            echo
+            echo '```mermaid'
+            echo 'flowchart LR'
+            echo '  A[SP011] --> B[CANARY]'
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
